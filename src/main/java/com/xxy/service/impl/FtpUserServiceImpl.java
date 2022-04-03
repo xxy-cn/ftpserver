@@ -1,6 +1,7 @@
 package com.xxy.service.impl;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.xxy.bean.FtpUser;
 import com.xxy.mapper.FtpUserMapper;
@@ -16,7 +17,7 @@ public class FtpUserServiceImpl implements FtpUserService {
 
     @Override
     public FtpUser selectUserById(String id) {
-        return ftpUserMapper.selectById(id);
+        return ftpUserMapper.selectOne(new QueryWrapper<FtpUser>().eq("userid",id).eq("is_delete",0));
     }
 
     @Override
